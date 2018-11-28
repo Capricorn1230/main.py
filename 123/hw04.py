@@ -1,6 +1,5 @@
 import tornado.ioloop
 import tornado.web
-
 class MainHandler(tornado.web.RequestHandler):
     def get(self,n):
         n = int(n)
@@ -15,16 +14,12 @@ class MainHandler(tornado.web.RequestHandler):
                  if i <= j:
                    html += '<TD>%d*%d=%2d</td>'%(i , j , i*j)
             html += '</TR>'
-
-
         html +='''
         </table>
         </body>
         </html>
         '''
         self.write(html)
-
-
 application = tornado.web.Application([
     (r"/", MainHandler),
 ], debug = True)
